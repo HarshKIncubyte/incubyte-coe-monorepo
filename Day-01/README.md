@@ -4,7 +4,8 @@
 
 * [Working at Incubyte](./working-at-incubyte.md)
 * [Succeeding at Incubyte – Core Values](./core-values.md)
-* [Kaizen & Lean Thinking](./kaizen.md)
+* [Kaizen](./kaizen.md)
+* [Lean Thinking](./lean-thinking.md)
 * [Giving & Receiving Feedback](./feedback.md)
 * [Three Laws of TDD](./three-laws-of-tdd.md)
 * [Red-Green-Refactor Cycle](./red-green-refactor.md)
