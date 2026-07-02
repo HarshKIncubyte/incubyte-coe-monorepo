@@ -19,7 +19,10 @@ class StringCalculator
   end
 
   def self.parse_delimiter(header)
-    header.start_with?('[') ? header[1..-2] : header
+    return header unless header.start_with?('[')
+
+    delimiters = header.scan(/\[([^\]]+)\]/).flatten
+    Regexp.union(delimiters)
   end
 
   def self.validate_negatives(nums)
