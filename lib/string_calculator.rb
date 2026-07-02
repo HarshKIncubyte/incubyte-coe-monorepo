@@ -4,6 +4,13 @@ class StringCalculator
   def self.add(numbers)
     return 0 if numbers.empty?
 
-    numbers.split(/,|\n/).sum(&:to_i)
+    if numbers.start_with?('//')
+      delimiter = numbers[2]
+      numbers = numbers.split("\n", 2).last
+    else
+      delimiter = /,|\n/
+    end
+
+    numbers.split(delimiter).sum(&:to_i)
   end
 end
