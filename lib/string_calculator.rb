@@ -4,8 +4,7 @@ class StringCalculator
   def self.add(numbers)
     delimiter, numbers = extract_delimiter(numbers)
     nums = numbers.split(delimiter).map(&:to_i)
-    negatives = nums.select(&:negative?)
-    raise ArgumentError, "negative numbers not allowed: #{negatives.join(', ')}" if negatives.any?
+    validate_negatives(nums)
 
     nums.sum
   end
@@ -18,5 +17,10 @@ class StringCalculator
     [delimiter, numbers]
   end
 
-  private_class_method :extract_delimiter
+  def self.validate_negatives(nums)
+    negatives = nums.select(&:negative?)
+    raise ArgumentError, "negative numbers not allowed: #{negatives.join(', ')}" if negatives.any?
+  end
+
+  private_class_method :extract_delimiter, :validate_negatives
 end
