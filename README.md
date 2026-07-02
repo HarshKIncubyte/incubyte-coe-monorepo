@@ -1,27 +1,23 @@
 # Incubyte COE Learning
 
-Welcome to my Incubyte COE Learning repository.
-
-This repository serves as my centralized knowledge base for the Incubyte onboarding program. It contains day-wise learning notes, coding exercises, resources, and reflections throughout my learning journey.
+This repository contains my notes and work completed as part of the Incubyte COE onboarding program.
 
 ## Learning Progress
 
-| Day   | Topics                             | Status         |
-| ----- | ---------------------------------- | -------------- |
-| Day 1 | Incubyte Culture & TDD Foundations | 🚧 In Progress |
+| Day   | Topics                             | Status      |
+| ----- | ---------------------------------- | ----------- |
+| Day 1 | Incubyte Culture & TDD Foundations | Completed   |
+| Day 2 | Ruby on Rails API with GraphQL     | In Progress |
 
 ## Daily Learning
 
 * [Day 1 – Incubyte Culture & TDD Foundations](./Day-01/README.md)
+* [Day 2 – Ruby on Rails API with GraphQL](./Day-02/README.md)
 
-More days will be added as I progress through the learning plan.
-
-## Repository Organization
+## Repository Structure
 
 Each day's folder contains:
 
-* 📚 Topic-wise notes
-* 💡 Key learnings
-* 🔗 Useful resources
-* 💻 Links to coding exercise repositories
-* 📝 Daily reflections
+* Learning notes
+* Reference resources
+* Links to coding exercise repositories
