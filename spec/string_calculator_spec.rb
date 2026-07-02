@@ -16,5 +16,11 @@ RSpec.describe StringCalculator do
         expect(described_class.add('1')).to eq(1)
       end
     end
+
+    context 'when the input has two numbers' do
+      it 'returns the sum of two numbers' do
+        expect(described_class.add('1,2')).to eq(3)
+      end
+    end
   end
 end
