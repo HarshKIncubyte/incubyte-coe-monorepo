@@ -10,12 +10,7 @@
 * [Three Laws of TDD](./three-laws-of-tdd.md)
 * [Red-Green-Refactor Cycle](./red-green-refactor.md)
 * [AI Plugins Overview](./ai-plugins.md)
-* [String Calculator Kata](./string-calculator.md)
 
-## Coding Exercise
+## Practical Exercise
 
-**Repository:** To be added after creating the String Calculator repository.
-
-## Reflection
-
-*To be updated after completing Day 1.*
+* **String Calculator Kata:** https://github.com/HarshKIncubyte/StringCalculator
