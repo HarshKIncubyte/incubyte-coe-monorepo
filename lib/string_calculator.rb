@@ -3,7 +3,7 @@
 class StringCalculator
   def self.add(numbers)
     delimiter, numbers = extract_delimiter(numbers)
-    nums = numbers.split(delimiter).map(&:to_i)
+    nums = numbers.split(delimiter).map(&:to_i).reject { |n| n > 1000 }
     validate_negatives(nums)
 
     nums.sum
