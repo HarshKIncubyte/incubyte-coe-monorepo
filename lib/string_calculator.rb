@@ -13,7 +13,7 @@ class StringCalculator
   def self.extract_delimiter(numbers)
     return [/,|\n/, numbers] unless numbers.start_with?('//')
 
-    delimiter = numbers[2]
+    delimiter = numbers[2] == '[' ? numbers[3...-1].split(']').first : numbers[2]
     numbers = numbers.split("\n", 2).last
     [delimiter, numbers]
   end
