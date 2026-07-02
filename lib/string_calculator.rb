@@ -21,6 +21,10 @@ class StringCalculator
   def self.parse_delimiter(header)
     return header unless header.start_with?('[')
 
+    build_delimiter_pattern(header)
+  end
+
+  def self.build_delimiter_pattern(header)
     delimiters = header.scan(/\[([^\]]+)\]/).flatten
     Regexp.union(delimiters)
   end
@@ -34,5 +38,6 @@ class StringCalculator
     nums.reject { |n| n > 1000 }
   end
 
-  private_class_method :extract_delimiter, :validate_negatives, :filter_large_numbers
+  private_class_method :extract_delimiter, :validate_negatives, :filter_large_numbers, :parse_delimiter,
+                       :build_delimiter_pattern
 end
