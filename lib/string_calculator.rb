@@ -2,10 +2,12 @@
 
 class StringCalculator
   def self.add(numbers)
-    return 0 if numbers.empty?
-
     delimiter, numbers = extract_delimiter(numbers)
-    numbers.split(delimiter).sum(&:to_i)
+    nums = numbers.split(delimiter).map(&:to_i)
+    negatives = nums.select(&:negative?)
+    raise ArgumentError, "negative numbers not allowed: #{negatives.join(', ')}" if negatives.any?
+
+    nums.sum
   end
 
   def self.extract_delimiter(numbers)
