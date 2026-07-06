@@ -7,7 +7,7 @@ This repository contains my notes and work completed as part of the Incubyte COE
 | Day   | Topics                             | Status      |
 | ----- | ---------------------------------- | ----------- |
 | Day 1 | Incubyte Culture & TDD Foundations | Completed   |
-| Day 2 | Ruby on Rails API with GraphQL     | In Progress |
+| Day 2 | Ruby on Rails API with GraphQL     | Completed   |
 
 ## Daily Learning
 
