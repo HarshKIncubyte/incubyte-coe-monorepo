@@ -1,12 +1,8 @@
 import './App.css'
+import UsersPage from './pages/UsersPage';
 
 function App() {
-  return (
-    <div className="app">
-      <h1>GraphQL Learning Frontend</h1>
-      <p>React + TypeScript + Apollo Client</p>
-    </div>
-  )
+    return <UsersPage />;
 }
 
 export default App
