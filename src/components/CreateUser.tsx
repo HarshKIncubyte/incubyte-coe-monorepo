@@ -3,10 +3,10 @@ import { useMutation } from "@apollo/client/react";
 
 import { CREATE_USER } from "../graphql/mutations/users";
 import { GET_USERS } from "../graphql/queries/users";
-
 import type {
   CreateUserData,
   CreateUserVariables,
+  GetUsersData,
 } from "../types/user";
 
 import "./CreateUser.css";
@@ -38,7 +38,24 @@ function CreateUser() {
           name,
           email,
         },
-        refetchQueries: [{ query: GET_USERS }],
+        update(cache, { data }) {
+          const existingData = cache.readQuery<GetUsersData>({
+            query: GET_USERS,
+          });
+
+          const newUser = data?.createUser.user;
+
+          if (!existingData || !newUser) {
+            return;
+          }
+
+          cache.writeQuery<GetUsersData>({
+            query: GET_USERS,
+            data: {
+              users: [...existingData.users, newUser],
+            },
+          });
+        },
       });
 
       if (data?.createUser.errors.length === 0) {
