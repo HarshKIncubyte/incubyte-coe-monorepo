@@ -38,6 +38,20 @@ function CreateUser() {
           name,
           email,
         },
+
+        optimisticResponse: {
+          createUser: {
+            __typename: "CreateUserPayload",
+            user: {
+              __typename: "User",
+              id: `temp-${Date.now()}`,
+              name,
+              email,
+            },
+            errors: [],
+          },
+        },
+
         update(cache, { data }) {
           const existingData = cache.readQuery<GetUsersData>({
             query: GET_USERS,
@@ -45,14 +59,17 @@ function CreateUser() {
 
           const newUser = data?.createUser.user;
 
-          if (!existingData || !newUser) {
-            return;
-          }
+          if (!existingData || !newUser) return;
+
+          // Remove any optimistic version of this user
+          const users = existingData.users.filter(
+            (user) => !(user.email === newUser.email && user.id.startsWith("temp-"))
+          );
 
           cache.writeQuery<GetUsersData>({
             query: GET_USERS,
             data: {
-              users: [...existingData.users, newUser],
+              users: [...users, newUser],
             },
           });
         },

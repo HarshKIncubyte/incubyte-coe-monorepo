@@ -1,4 +1,5 @@
 export type User = {
+  __typename?: "User";
   id: string;
   name: string;
   email: string;
@@ -10,11 +11,8 @@ export type GetUsersData = {
 
 export interface CreateUserData {
   createUser: {
-    user: {
-      id: string;
-      name: string;
-      email: string;
-    } | null;
+    __typename?: "CreateUserPayload";
+    user: User | null;
     errors: string[];
   };
 }
