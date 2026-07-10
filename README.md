@@ -1,75 +1,86 @@
-# React + TypeScript + Vite
+# Day 4 - Frontend with React & Apollo Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript frontend application built as part of the Incubyte COE program.
+Connects to the GraphQL backend from [graphql-learning](https://github.com/HarshKIncubyte/graphql-learning).
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 18 + TypeScript
+- Vite
+- Apollo Client v4
+- Context API
+- Jest + React Testing Library
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
 
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+src/
+├── apollo/
+├── components/      
+│   ├── Navbar.tsx
+│   ├── UserProfile.tsx
+│   └── CreateUser.tsx
+├── context/         
+│   └── UserContext.tsx
+├── graphql/         
+│   └── queries/
+├── pages/           
+│   └── UsersPage.tsx
+└── types/           
+    └── user.ts
 ```
+
+
+## Prerequisites
+
+- Node.js 18+
+- GraphQL backend running from [graphql-learning](https://github.com/HarshKIncubyte/graphql-learning)
+
+## Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/HarshKIncubyte/graphql-learning-frontend.git
+cd graphql-learning-frontend
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the GraphQL backend
+
+```bash
+# In your Rails backend repo
+bundle install
+rails s
+# Runs on http://localhost:3000/graphql
+```
+
+### 4. Start the frontend
+
+```bash
+npm run dev
+# Runs on http://localhost:5173
+```
+
+## Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Watch mode
+npm run test:watch
+```
+
+## What's covered
+
+- `useQuery` — fetch users list from GraphQL API
+- `useMutation` — create new user
+- Context API — shared user state across Navbar and UserProfile
+- Jest + RTL — component tests
+- MockedProvider — GraphQL API mock tests
