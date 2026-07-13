@@ -106,6 +106,20 @@ GEM
     dotenv (3.2.0)
     drb (2.2.3)
     ed25519 (1.4.0)
+    elastic-transport (8.5.3)
+      faraday (< 3)
+      multi_json
+    elasticsearch (8.19.3)
+      elastic-transport (~> 8.3)
+      elasticsearch-api (= 8.19.3)
+      ostruct
+    elasticsearch-api (8.19.3)
+      multi_json
+    elasticsearch-model (8.0.1)
+      activesupport (> 3)
+      elasticsearch (~> 8)
+      hashie
+    elasticsearch-rails (8.0.1)
     erb (6.0.4)
     erubi (1.13.1)
     et-orbi (1.4.0)
@@ -117,6 +131,12 @@ GEM
       railties (>= 6.1.0)
     faker (3.8.0)
       i18n (>= 1.8.11, < 2)
+    faraday (2.14.3)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-net_http (3.4.4)
+      net-http (~> 0.5)
     fiber-storage (1.0.1)
     fugit (1.12.3)
       et-orbi (~> 1.4)
@@ -130,6 +150,8 @@ GEM
       fiber-storage
       logger
     hashdiff (1.2.1)
+    hashie (5.1.0)
+      logger
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     image_processing (2.0.2)
@@ -169,6 +191,9 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.8.3)
+    multi_json (1.21.1)
+    net-http (0.9.1)
+      uri (>= 0.11.1)
     net-imap (0.6.4.1)
       date
       net-protocol
@@ -395,6 +420,9 @@ DEPENDENCIES
   brakeman
   bundler-audit
   debug
+  elasticsearch (~> 8.0)
+  elasticsearch-model (~> 8.0)
+  elasticsearch-rails (~> 8.0)
   factory_bot_rails
   faker
   graphiql-rails
