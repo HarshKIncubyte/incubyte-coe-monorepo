@@ -43,3 +43,13 @@
 # Ignore Docker-related files
 /.dockerignore
 /Dockerfile*
+
+# Ignore test/spec folders
+/spec
+/test
+
+# Ignore markdown files
+*.md
+
+# Ignore node_modules if any
+node_modules
