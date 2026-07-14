@@ -15,6 +15,11 @@ class SearchController < ApplicationController
             match: { title: query }
           }
         }
+      },
+      aggs: {
+        published_breakdown: {
+          terms: { field: :published }
+        }
       }
     }
 
@@ -24,12 +29,24 @@ class SearchController < ApplicationController
       }
     end
 
-    results = Post.search(search_definition).records.to_a
+    response = Post.search(search_definition)
+    results = response.records.to_a
+    aggregations = response.aggregations
+
+    published_breakdown = aggregations
+      .published_breakdown
+      .buckets
+      .each_with_object({}) do |bucket, hash|
+        hash[bucket["key_as_string"] || bucket["key"].to_s] = bucket["doc_count"]
+      end
 
     render json: {
       query: query,
       published_filter: published,
       total: results.count,
+      aggregations: {
+        published_breakdown: published_breakdown
+      },
       results: results.map { |post|
         {
           id: post.id,
