@@ -1,57 +1,76 @@
 import { useState } from "react";
+import {
+  Box,
+  Button,
+  Field,
+  Heading,
+  Input,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { useUser } from "../context/UserContext";
 
 export default function UserProfile() {
   const { user, updateName, updateEmail } = useUser();
 
-  // Local state — only this component needs these, no other component cares
   const [inputName, setInputName] = useState("");
   const [inputEmail, setInputEmail] = useState("");
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
+    <Box className="rounded-lg shadow-md" bg="white" p={6} mb={6}>
+      <Heading size="md" mb={1}>
+        {user.name}
+      </Heading>
+      <Text color="gray.500" mb={4}>
+        {user.email}
+      </Text>
 
-      {/* Update Name */}
-      <div>
-        <input
-          type="text"
-          value={inputName}
-          placeholder="Enter new name"
-          onChange={(e) => setInputName(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            if (inputName.trim()) {
-              updateName(inputName);
-              setInputName(""); // clear after update
-            }
-          }}
-        >
-          Update Name
-        </button>
-      </div>
+      <Stack gap={4}>
+        <Field.Root>
+          <Field.Label>Update Name</Field.Label>
+          <Stack direction="row" gap={2}>
+            <Input
+              value={inputName}
+              placeholder="Enter new name"
+              onChange={(e) => setInputName(e.target.value)}
+            />
+            <Button
+              colorPalette="blue"
+              onClick={() => {
+                if (inputName.trim()) {
+                  updateName(inputName);
+                  setInputName("");
+                }
+              }}
+            >
+              Update
+            </Button>
+          </Stack>
+        </Field.Root>
 
-      {/* Update Email */}
-      <div>
-        <input
-          type="email"
-          value={inputEmail}
-          placeholder="Enter new email"
-          onChange={(e) => setInputEmail(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            if (inputEmail.trim()) {
-              updateEmail(inputEmail);
-              setInputEmail(""); // clear after update
-            }
-          }}
-        >
-          Update Email
-        </button>
-      </div>
-    </div>
+        <Field.Root>
+          <Field.Label>Update Email</Field.Label>
+          <Stack direction="row" gap={2}>
+            <Input
+              type="email"
+              value={inputEmail}
+              placeholder="Enter new email"
+              onChange={(e) => setInputEmail(e.target.value)}
+            />
+            <Button
+              colorPalette="blue"
+              onClick={() => {
+                if (inputEmail.trim()) {
+                  updateEmail(inputEmail);
+                  setInputEmail("");
+                }
+              }}
+            >
+              Update
+            </Button>
+          </Stack>
+        </Field.Root>
+      </Stack>
+    </Box>
   );
 }
