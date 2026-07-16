@@ -95,7 +95,7 @@ function CreateUser() {
   };
 
   return (
-    <Box className="rounded-lg shadow-md" bg="white" p={6}>
+    <Box className="rounded-lg shadow-md" bg={{ base: "white", _dark: "gray.800" }} p={6}>
       <Heading size="md" mb={4}>
         Create User
       </Heading>

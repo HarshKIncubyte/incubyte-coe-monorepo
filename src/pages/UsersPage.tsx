@@ -35,7 +35,7 @@ function UsersPage() {
                 <Box
                   key={user.id}
                   className="rounded-lg shadow-sm"
-                  bg="white"
+                  bg={{ base: "white", _dark: "gray.800" }}
                   p={4}
                 >
                   <Text fontWeight="bold">{user.name}</Text>
