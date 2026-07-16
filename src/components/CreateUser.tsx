@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client/react";
-
+import {
+  Alert,
+  Box,
+  Button,
+  Field,
+  Heading,
+  Input,
+  Stack,
+} from "@chakra-ui/react";
 import { CREATE_USER } from "../graphql/mutations/users";
 import { GET_USERS } from "../graphql/queries/users";
 import type {
@@ -8,8 +16,6 @@ import type {
   CreateUserVariables,
   GetUsersData,
 } from "../types/user";
-
-import "./CreateUser.css";
 
 function CreateUser() {
   const [name, setName] = useState("");
@@ -89,39 +95,54 @@ function CreateUser() {
   };
 
   return (
-    <div className="create-user">
-      <h2>Create User</h2>
+    <Box className="rounded-lg shadow-md" bg="white" p={6}>
+      <Heading size="md" mb={4}>
+        Create User
+      </Heading>
 
       {successMessage && (
-        <p className="success">{successMessage}</p>
+        <Alert.Root status="success" mb={4}>
+          <Alert.Indicator />
+          <Alert.Title>{successMessage}</Alert.Title>
+        </Alert.Root>
       )}
 
       {errorMessage && (
-        <p className="error">{errorMessage}</p>
+        <Alert.Root status="error" mb={4}>
+          <Alert.Indicator />
+          <Alert.Title>{errorMessage}</Alert.Title>
+        </Alert.Root>
       )}
 
-      <label>Name</label>
+      <Stack gap={4}>
+        <Field.Root>
+          <Field.Label>Name</Field.Label>
+          <Input
+            placeholder="Enter name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
+        </Field.Root>
 
-      <input
-        type="text"
-        placeholder="Enter name"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
+        <Field.Root>
+          <Field.Label>Email</Field.Label>
+          <Input
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </Field.Root>
 
-      <label>Email</label>
-
-      <input
-        type="email"
-        placeholder="Enter email"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-      />
-
-      <button onClick={handleCreateUser} disabled={loading}>
-        {loading ? "Creating..." : "Create User"}
-      </button>
-    </div>
+        <Button
+          colorPalette="blue"
+          onClick={handleCreateUser}
+          loading={loading}
+        >
+          {loading ? "Creating..." : "Create User"}
+        </Button>
+      </Stack>
+    </Box>
   );
 }
 
