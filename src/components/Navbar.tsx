@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <Box bg={colorMode === "light" ? "gray.100" : "gray.800"} px={6} py={4}>
       <Flex justify="space-between" align="center">
-        <Heading size="md" className="text-blue-600">
+        <Heading size="md" color="brand.500">
           GraphQL App
         </Heading>
         <Flex align="center" gap={4}>
