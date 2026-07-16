@@ -1,41 +1,54 @@
 import { useQuery } from "@apollo/client/react";
+import { Box, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { GET_USERS } from "../graphql/queries/users";
 import type { GetUsersData } from "../types/user";
 import CreateUser from "../components/CreateUser";
-import "./UsersPage.css";
 
 function UsersPage() {
   const { data, loading, error } = useQuery<GetUsersData>(GET_USERS);
 
-  if (loading) return <p className="status-message">Loading users...</p>;
-  if (error) return <p className="status-message">Error: {error.message}</p>;
-  if (!data) return <p className="status-message">No data found.</p>;
+  if (loading) return <Text p={6}>Loading users...</Text>;
+  if (error) return <Text p={6} color="red.500">Error: {error.message}</Text>;
+  if (!data) return <Text p={6}>No data found.</Text>;
 
   return (
-    <div className="users-page">
-      <h1>User Management</h1>
+    <Box className="max-w-6xl mx-auto" p={6}>
+      <Heading size="lg" mb={6}>
+        User Management
+      </Heading>
 
-      <div className="dashboard">
-        <div className="left-panel">
+      <SimpleGrid columns={{ base: 1, md: 2 }} gap={8}>
+        <Box>
           <CreateUser />
-        </div>
+        </Box>
 
-        <div className="right-panel">
-          <h2>Users</h2>
+        <Box>
+          <Heading size="md" mb={4}>
+            Users
+          </Heading>
 
           {data.users.length === 0 ? (
-            <p>No users found.</p>
+            <Text>No users found.</Text>
           ) : (
-            data.users.map((user) => (
-              <div key={user.id} className="user-card">
-                <div className="user-name">{user.name}</div>
-                <div className="user-email">{user.email}</div>
-              </div>
-            ))
+            <VStack gap={3} align="stretch">
+              {data.users.map((user) => (
+                <Box
+                  key={user.id}
+                  className="rounded-lg shadow-sm"
+                  bg="white"
+                  p={4}
+                >
+                  <Text fontWeight="bold">{user.name}</Text>
+                  <Text color="gray.500" fontSize="sm">
+                    {user.email}
+                  </Text>
+                </Box>
+              ))}
+            </VStack>
           )}
-        </div>
-      </div>
-    </div>
+        </Box>
+      </SimpleGrid>
+    </Box>
   );
 }
 
