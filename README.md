@@ -6,8 +6,8 @@ This repository contains a **Ruby on Rails API-only application** built
 progressively across multiple days of the Incubyte COE program.
 
 Starting with GraphQL on Day 2, the project evolved through testing,
-Docker, Elasticsearch, Redis caching, and AI-assisted development with
-Claude Code plugins.
+Docker, Elasticsearch, Redis caching, AI-assisted development with
+Claude Code plugins, and OOP principles with service object extraction.
 
 ---
 
@@ -21,6 +21,7 @@ Claude Code plugins.
 | [day6](https://github.com/HarshKIncubyte/graphql-learning/tree/day6) | Day 6 | Elasticsearch Integration in Rails | [Notes](./docs/day6-elasticsearch.md) |
 | [day7](https://github.com/HarshKIncubyte/graphql-learning/tree/day7) | Day 7 | Backend Enhancement: Redis Caching | [Notes](./docs/day7-redis-caching.md) |
 | [day8](https://github.com/HarshKIncubyte/graphql-learning/tree/day8) | Day 8 | AI Integration: Bee & Learn Plugins | [Notes](./docs/day8-bee-learn.md) |
+| [day10](https://github.com/HarshKIncubyte/graphql-learning/tree/day10) | Day 10 | OOP Principles & Service Object Extraction | [Notes](./docs/day10-oop-refactoring.md) |
 
 ---
 
@@ -45,7 +46,7 @@ Claude Code plugins.
 ```bash
 git clone https://github.com/HarshKIncubyte/graphql-learning.git
 cd graphql-learning
-git checkout day8  # latest branch with all features
+git checkout day10  # latest branch with all features
 docker compose up --build
 ```
 
