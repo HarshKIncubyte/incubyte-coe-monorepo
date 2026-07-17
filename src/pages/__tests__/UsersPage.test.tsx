@@ -1,5 +1,5 @@
-import { render, screen, waitFor } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing/react";
+import { render, screen, waitFor } from "../../test-utils";
 import UsersPage from "../UsersPage";
 import { GET_USERS } from "../../graphql/queries/users";
 

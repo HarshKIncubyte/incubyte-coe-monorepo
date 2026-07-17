@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { render, screen, within } from "../../test-utils";
 import UserProfile from "../UserProfile";
 import { UserProvider } from "../../context/UserContext";
 
@@ -24,7 +24,9 @@ describe("UserProfile", () => {
 
     const input = screen.getByPlaceholderText("Enter new name");
     await userEvent.type(input, "harsh k");
-    await userEvent.click(screen.getByText("Update Name"));
+
+    const nameField = screen.getByText("Update Name").closest("div")!;
+    await userEvent.click(within(nameField).getByRole("button", { name: "Update" }));
 
     expect(screen.getByText("harsh k")).toBeInTheDocument();
   });
