@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import { ApolloProvider } from '@apollo/client/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import system from './theme'
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')!).render(
       <ChakraProvider value={system}>
         <ColorModeProvider>
           <UserProvider>
-            <App />
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
           </UserProvider>
         </ColorModeProvider>
       </ChakraProvider>
