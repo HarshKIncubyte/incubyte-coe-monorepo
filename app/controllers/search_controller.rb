@@ -35,54 +35,6 @@ class SearchController < ApplicationController
 
   # SMELL: One method doing 3 jobs — build ES query, run it, format response.
   def perform_search(query, published)
-    search_definition = {
-      query: {
-        bool: {
-          must: {
-            match: { title: query }
-          }
-        }
-      },
-      aggs: {
-        published_breakdown: {
-          terms: { field: :published }
-        }
-      }
-    }
-
-    if published.present?
-      search_definition[:query][:bool][:filter] = {
-        term: { published: published == "true" }
-      }
-    end
-
-    response = Post.search(search_definition)
-    results = response.records.to_a
-    aggregations = response.aggregations
-
-    published_breakdown = aggregations
-      .published_breakdown
-      .buckets
-      .each_with_object({}) do |bucket, hash|
-        hash[bucket["key_as_string"] || bucket["key"].to_s] = bucket["doc_count"]
-      end
-
-    {
-      query: query,
-      published_filter: published,
-      cached: true,
-      total: results.count,
-      aggregations: {
-        published_breakdown: published_breakdown
-      },
-      results: results.map { |post|
-        {
-          id: post.id,
-          title: post.title,
-          published: post.published,
-          user_id: post.user_id
-        }
-      }
-    }
+    PostSearchService.new(query: query, published: published).call
   end
 end
