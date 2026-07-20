@@ -31,3 +31,7 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+coverage/
+
+# Bee (SDD plugin) local working files — scratch state, not project artifacts.
+/.claude/*.local.md
