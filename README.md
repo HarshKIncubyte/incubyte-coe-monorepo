@@ -9,7 +9,11 @@ Starting with GraphQL on Day 2, the project evolved through testing,
 Docker, Elasticsearch, Redis caching, AI-assisted development with
 Claude Code plugins, and OOP principles with service object extraction.
 
----
+- **Name the smell first** — once you name it, the fix is obvious.
+- **Smells come in clusters** — find one, you'll find two or three more nearby.
+- **The cure is almost always extraction** — long method → extract method. Large class → extract class.
+- **Refactoring is not rewriting** — small, safe, incremental steps. Tests green at every step.
+- **The squint test is free** — no tool needed. Just squint. If the shape looks wrong, it is wrong.
 
 ## Branch Guide
 
@@ -23,9 +27,9 @@ Claude Code plugins, and OOP principles with service object extraction.
 | [day8](https://github.com/HarshKIncubyte/graphql-learning/tree/day8) | Day 8 | AI Integration: Bee & Learn Plugins | [Notes](./docs/day8-bee-learn.md) |
 | [day10](https://github.com/HarshKIncubyte/graphql-learning/tree/day10) | Day 10 | OOP Principles & Service Object Extraction | [Notes](./docs/day10-oop-refactoring.md) |
 
----
+## What I Built
 
-## Tech Stack
+### Code Smells Found
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
@@ -39,7 +43,7 @@ Claude Code plugins, and OOP principles with service object extraction.
 | Redis | 7.2 | Caching & Data Structures |
 | Claude Code + Bee | — | AI-assisted spec-driven development |
 
----
+### Extracted PostSearchService
 
 ## Getting Started with Docker
 
