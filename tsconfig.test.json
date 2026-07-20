@@ -7,5 +7,5 @@
     "verbatimModuleSyntax": false,
     "module": "commonjs"
   },
-  "include": ["src", "src/declarations.d.ts"]
+  "include": ["src", "src/declarations.d.ts", "setupTests.ts"]
 }
